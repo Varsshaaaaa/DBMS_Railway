@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Train Details</h2>
+        <form method="POST" action="/add_train">
+            <label for="trainName">Train Name:</label>
+            <input type="text" name="train_name" id="trainName" required>
+
+            <label for="departureCity">Departure City:</label>
+            <input type="text" name="departure_city" id="departureCity" required>
+
+            <label for="arrivalCity">Arrival City:</label>
+            <input type="text" name="arrival_city" id="arrivalCity" required>
+
+            <button type="submit">Add Train</button>
+        </form>
+
+        <h2>Train Details</h2>
+        <table border="1">
+            <tr>
+                <th>Train Name</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Compartments</th>
+            </tr>
+            {% for train in joined_data %}
+            <tr>
+                <td>{{ train.train_name }}</td>
+                <td>{{ train.departure_city }}</td>
+                <td>{{ train.arrival_city }}</td>
+                <td>{{ train.compartments}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Update Train Details</h2>
+        <form method="POST" action="/update_train">
+            <label for="trainId">Train ID:</label>
+            <input type="text" name="trainId" id="trainId" required>
+
+            <label for="trainName">Train Name:</label>
+            <input type="text" name="trainName" id="trainName" required>
+
+            <label for="departureCity">Departure City:</label>
+            <input type="text" name="departureCity" id="departureCity" required>
+
+            <label for="arrivalCity">Arrival City:</label>
+            <input type="text" name="arrivalCity" id="arrivalCity" required>
+
+            <label for="compartments">Compartments:</label>
+            <input type="text" name="compartments" id="compartments" required>
+
+            <button type="submit">Update Train</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
